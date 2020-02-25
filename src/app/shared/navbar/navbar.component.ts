@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
-import { Location, PopStateEvent } from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {Router, NavigationEnd, NavigationStart} from '@angular/router';
+import {Location, PopStateEvent} from '@angular/common';
+import {VizaiHeaderLinks} from './model/vizai-header-links';
+import {HeaderService} from './HeaderService';
+import {VizaiHeader} from './model/vizai-header';
 
 @Component({
     selector: 'app-navbar',
@@ -12,44 +15,55 @@ export class NavbarComponent implements OnInit {
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
 
-    constructor(public location: Location, private router: Router) {
+    brandName: string;
+    listItems: VizaiHeaderLinks[];
+
+    constructor(public location: Location, private router: Router, private headerService: HeaderService) {
     }
 
     ngOnInit() {
-      this.router.events.subscribe((event) => {
-        this.isCollapsed = true;
-        if (event instanceof NavigationStart) {
-           if (event.url != this.lastPoppedUrl)
-               this.yScrollStack.push(window.scrollY);
-       } else if (event instanceof NavigationEnd) {
-           if (event.url == this.lastPoppedUrl) {
-               this.lastPoppedUrl = undefined;
-               window.scrollTo(0, this.yScrollStack.pop());
-           } else
-               window.scrollTo(0, 0);
-       }
-     });
-     this.location.subscribe((ev:PopStateEvent) => {
-         this.lastPoppedUrl = ev.url;
-     });
+        this.router.events.subscribe((event) => {
+            this.isCollapsed = true;
+            if (event instanceof NavigationStart) {
+                // tslint:disable-next-line:triple-equals
+                if (event.url !== this.lastPoppedUrl) {
+                    this.yScrollStack.push(window.scrollY);
+                }
+            } else if (event instanceof NavigationEnd) {
+                if (event.url === this.lastPoppedUrl) {
+                    this.lastPoppedUrl = undefined;
+                    window.scrollTo(0, this.yScrollStack.pop());
+                } else {
+                    window.scrollTo(0, 0);
+                }
+            }
+        });
+        this.location.subscribe((ev: PopStateEvent) => {
+            this.lastPoppedUrl = ev.url;
+        });
+        this.headerService.getHeader().pipe()
+            .subscribe((data: VizaiHeader) => {
+                console.log(data.header.brandName);
+                this.brandName = data.header.brandName;
+                this.listItems = data.header.listItems;
+            });
     }
 
     isHome() {
-        var titlee = this.location.prepareExternalUrl(this.location.path());
+        const titlee = this.location.prepareExternalUrl(this.location.path());
 
-        if( titlee === '#/home' ) {
+        if (titlee === '#/home') {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
+
     isDocumentation() {
-        var titlee = this.location.prepareExternalUrl(this.location.path());
-        if( titlee === '#/documentation' ) {
+        const titlee = this.location.prepareExternalUrl(this.location.path());
+        if (titlee === '#/documentation') {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }

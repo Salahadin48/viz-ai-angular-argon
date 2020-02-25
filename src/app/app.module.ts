@@ -15,6 +15,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 
 import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { LoginComponent } from './login/login.component';
     LoginComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     NgbModule.forRoot(),
     FormsModule,
@@ -34,7 +36,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     HomeModule
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
