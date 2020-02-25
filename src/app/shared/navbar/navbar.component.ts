@@ -4,6 +4,9 @@ import {Location, PopStateEvent} from '@angular/common';
 import {VizaiHeaderLinks} from './model/vizai-header-links';
 import {HeaderService} from './HeaderService';
 import {VizaiHeader} from './model/vizai-header';
+import Logo from './model/Logo';
+import {Header} from './model/Header';
+import Content from './model/Content';
 
 @Component({
     selector: 'app-navbar',
@@ -15,8 +18,12 @@ export class NavbarComponent implements OnInit {
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
 
-    brandName: string;
-    listItems: VizaiHeaderLinks[];
+    // brandName: string;
+    // listItems: VizaiHeaderLinks[];
+
+    href: string;
+    imageUrl: string;
+    contents: Content[];
 
     constructor(public location: Location, private router: Router, private headerService: HeaderService) {
     }
@@ -43,9 +50,11 @@ export class NavbarComponent implements OnInit {
         });
         this.headerService.getHeader().pipe()
             .subscribe((data: VizaiHeader) => {
-                console.log(data.header.brandName);
-                this.brandName = data.header.brandName;
-                this.listItems = data.header.listItems;
+                console.log('R: ' + JSON.stringify(data.header));
+                // this.brandName = data.header.brandName;
+                // this.listItems = data.header.listItems;
+                this.href = data.header.logo.href;
+                this.imageUrl = data.header.logo.imageUrl;
             });
     }
 
