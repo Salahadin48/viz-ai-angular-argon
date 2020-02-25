@@ -29,7 +29,8 @@
     "popper.js": "1.14.7",
     "rxjs": "6.4.0",
     "rxjs-compat": "6.4.0",
-    "zone.js": "0.8.29"
+    "zone.js": "0.8.29",
+    "node-sass": "4.13.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "0.13.6",
