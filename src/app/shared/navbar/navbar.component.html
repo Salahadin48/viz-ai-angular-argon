@@ -93,12 +93,12 @@
                         <div class="dropdown-menu-inner">
                             <!-- <a [routerLink]="['/landing']" class="dropdown-item" *ngFor="let item of listItems">{{item.value}}</a>-->
                             <a routerLinkActive="active" [routerLink]="['documentation/tutorial']"
-                               class="media d-flex align-items-center" *ngFor="let item of listItems">
+                               class="media d-flex align-items-center" *ngFor="let item of contents">
                                 <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                                     <i class="ni ni-spaceship"></i>
                                 </div>
                                 <div class="media-body ml-3">
-                                    <h6 class="heading text-primary mb-md-1">{{item.value}}</h6>
+                                    <h6 class="heading text-primary mb-md-1">{{item.title}}</h6>
                                     <p class="description d-none d-md-inline-block mb-0">Learn how to use Argon
                                         compiling Scss, change brand colors and more.</p>
                                 </div>
