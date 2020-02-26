@@ -3,22 +3,23 @@ import {Injectable} from '@angular/core';
 import {VizaiHeader} from './model/vizai-header';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
 @Injectable({
-  providedIn: 'root'  // <- ADD THIS
+    providedIn: 'root'  // <- ADD THIS
 })
 export class HeaderService {
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {
+    }
 
-  // private userUrl = 'https://sleepy-wildwood-59504.herokuapp.com/';
-  private userUrl = 'http://localhost:8080/';
-  // private userUrl = '/api';
+    private userUrl = 'https://sleepy-wildwood-59504.herokuapp.com/';
+    // private userUrl = 'http://localhost:8080/';
+    // private userUrl = '/api';
 
-  public getHeader() {
-    return  this.http.get<VizaiHeader>(this.userUrl);
-  }
+    public getHeader() {
+        return this.http.get<VizaiHeader>(this.userUrl);
+    }
 
 }
