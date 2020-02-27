@@ -7,6 +7,7 @@ import {VizaiHeader} from './model/vizai-header';
 import Logo from './model/Logo';
 import {Header} from './model/Header';
 import Content from './model/Content';
+import {ConcreteContent} from './model/ConcreteContent';
 
 @Component({
     selector: 'app-navbar',
@@ -55,6 +56,8 @@ export class NavbarComponent implements OnInit {
                 // this.listItems = data.header.listItems;
                 this.href = data.header.logo.href;
                 this.imageUrl = data.header.logo.imageUrl;
+                console.log('Contents: ' + JSON.stringify(data.header.contents['contents']));
+                this.contents = data.header.contents['contents'];
             });
     }
 
