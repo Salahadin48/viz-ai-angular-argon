@@ -16,6 +16,8 @@ import {PrivateLink} from './model/PrivateLink';
 export class FooterComponent implements OnInit {
     test: Date = new Date();
 
+    companyName = 'Visual AI';
+    companyUrl = 'https://www.viz-ai.com/';
     message: string;
     socialList: SocialList[];
     privateLinks: PrivateLink[];
