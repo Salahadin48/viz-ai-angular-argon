@@ -14,7 +14,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
 import {HttpClientModule} from '@angular/common/http';
-import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCollapseModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,15 +26,16 @@ import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     LoginComponent
   ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    FormsModule,
-    RouterModule,
-    AppRoutingModule,
-    HomeModule,
-    NgbCollapseModule
-  ],
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        FormsModule,
+        RouterModule,
+        AppRoutingModule,
+        HomeModule,
+        NgbCollapseModule,
+        NgbTooltipModule
+    ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })

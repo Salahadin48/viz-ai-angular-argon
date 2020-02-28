@@ -1,6 +1,6 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {VizaiHeader} from './model/vizai-header';
+import {VizaiFooter} from './model/viz-ai-footer';
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -9,17 +9,17 @@ const httpOptions = {
 @Injectable({
     providedIn: 'root'  // <- ADD THIS
 })
-export class HeaderService {
+export class FooterService {
 
     constructor(private http: HttpClient) {
     }
 
     private userUrl = 'https://sleepy-wildwood-59504.herokuapp.com/';
-    // private userUrl = 'http://localhost:8080/get/header';
+    // private userUrl = 'http://localhost:8080/get/footer';
     // private userUrl = '/api';
 
-    public getHeader() {
-        return this.http.get<VizaiHeader>(this.userUrl);
+    public getFooter() {
+        return this.http.get<VizaiFooter>(this.userUrl);
     }
 
 }

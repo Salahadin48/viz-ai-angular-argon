@@ -51,7 +51,7 @@ export class NavbarComponent implements OnInit {
         });
         this.headerService.getHeader().pipe()
             .subscribe((data: VizaiHeader) => {
-                console.log('R: ' + JSON.stringify(data.header));
+                console.log('R: ' + JSON.stringify(data));
                 // this.brandName = data.header.brandName;
                 // this.listItems = data.header.listItems;
                 this.href = data.header.logo.href;
