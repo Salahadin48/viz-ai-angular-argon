@@ -14,7 +14,7 @@ export class HeaderService {
     constructor(private http: HttpClient) {
     }
 
-    private userUrl = 'https://sleepy-wildwood-59504.herokuapp.com/';
+    private userUrl = 'https://sleepy-wildwood-59504.herokuapp.com/get/header';
     // private userUrl = 'http://localhost:8080/get/header';
     // private userUrl = '/api';
 
